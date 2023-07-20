@@ -49,6 +49,8 @@ const ticTacToeGame = () => {
     const player1 = Player("o", "images/circle-outline.svg");
     const player2 = Player("x", "images/close.svg");
     const board = Board();
+    const xPlayerWinCount = document.querySelector("#x");
+    const oPlayerWinCount = document.querySelector("#o");
     const currentPlayerImage = () => {
         return currentPlayer.imagePath;
     }
@@ -62,6 +64,13 @@ const ticTacToeGame = () => {
         field.innerHTML = `<img src="${currentPlayer.imagePath}" alt=""></img>`
         if (board.gameWon()) {
             displayMessage(`<img src="${currentPlayer.imagePath}" style="height:50px;" alt=""></img> wins!`)
+            currentPlayer.win()
+            if (currentPlayer.symbol == "x") {
+                console.log(currentPlayer.getWins())
+                xPlayerWinCount.textContent = currentPlayer.getWins()
+            } else {
+                oPlayerWinCount.textContent = currentPlayer.getWins()
+            }
         } else if (board.noFreeFields()) {
             displayMessage("It's a tie!")
         }
