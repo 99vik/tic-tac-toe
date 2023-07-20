@@ -63,10 +63,9 @@ const ticTacToeGame = () => {
         board.insertValue(currentPlayer.symbol, id - 1);
         field.innerHTML = `<img src="${currentPlayer.imagePath}" alt=""></img>`
         if (board.gameWon()) {
-            displayMessage(`<img src="${currentPlayer.imagePath}" style="height:50px;" alt=""></img> wins!`)
+            displayMessage(`<img src="${currentPlayer.imagePath}" style="width: clamp(40px, 5vw, 60px);" alt=""></img> wins!`)
             currentPlayer.win()
             if (currentPlayer.symbol == "x") {
-                console.log(currentPlayer.getWins())
                 xPlayerWinCount.textContent = currentPlayer.getWins()
             } else {
                 oPlayerWinCount.textContent = currentPlayer.getWins()
@@ -103,4 +102,4 @@ for(i = 1; i <= 9; i++) {
         if (id == 0) return
         game.playerTurn(id, field);
     });
-};  
+};
